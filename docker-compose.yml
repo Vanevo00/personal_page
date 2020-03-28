@@ -3,9 +3,7 @@ services:
   app:
     container_name: node-app
     restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile-dev
+    build: .
     ports:
       - '5050:5050'
     volumes:

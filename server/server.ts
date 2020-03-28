@@ -15,7 +15,7 @@ app.options('/', cors()) // CORS pre-flight
 app.use(cors()) // enable CORS
 
 // define routes
-app.get('/', (req: Request, res: Response) => res.send('Welcome to my personal page APIS'))
+app.get('/', (req: Request, res: Response) => res.send('Welcome to my personal page API'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))
 
