@@ -1,7 +1,7 @@
 version: '3'
 services:
-  app:
-    container_name: node-app
+  node-api:
+    container_name: node-api
     restart: always
     build:
       context: .
@@ -12,6 +12,18 @@ services:
       - .:/usr/src/app
     links:
       - mongo
+  node-client:
+    container_name: node-client
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile-dev
+    ports:
+      - '5051:5051'
+    volumes:
+      - ./client:/usr/src/app
+    links:
+      - node-api
   mongo:
     container_name: mongo
     image: mongo

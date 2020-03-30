@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const db = 'mongodb://mongo:27017/node-app'
+const db = 'mongodb://mongo:27017/node-api'
 
 const connectDB = async () => {
   try {
