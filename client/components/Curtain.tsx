@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CurtainBottom, CurtainContainer, CurtainTop } from './StyledCurtain'
 
 const Curtain = () => {
+  const [showCurtain, setShowCurtain] = useState(false)
+
+  useEffect(() => {
+    setShowCurtain(true)
+  }, [])
+
   return (
     <CurtainContainer>
-      <CurtainTop>
+      <CurtainTop show={showCurtain}>
 
       </CurtainTop>
-      <CurtainBottom>
+      <CurtainBottom show={showCurtain}>
 
       </CurtainBottom>
     </CurtainContainer>
