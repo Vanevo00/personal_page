@@ -10,9 +10,9 @@ export const CurtainContainer = styled.div`
 export const CurtainTop = styled.div`
   height: 50%;
   width: 100%;
-  background-color: red;
+  background-color: ${props => props.theme.colors.mainDark};
 `
 
 export const CurtainBottom = styled(CurtainTop)`
-  background-color: blue;
+  background-color: ${props => props.theme.colors.mainGreen};
 `
