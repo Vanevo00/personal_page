@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CurtainBottom, CurtainContainer, CurtainTop } from './StyledCurtain'
+import { CurtainRight, CurtainContainer, CurtainLeft } from './StyledCurtain'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
@@ -10,12 +10,12 @@ const Curtain = () => {
 
   return (
     <CurtainContainer>
-      <CurtainTop show={showCurtain}>
+      <CurtainLeft show={showCurtain}>
 
-      </CurtainTop>
-      <CurtainBottom show={showCurtain}>
+      </CurtainLeft>
+      <CurtainRight show={showCurtain}>
 
-      </CurtainBottom>
+      </CurtainRight>
     </CurtainContainer>
   )
 }

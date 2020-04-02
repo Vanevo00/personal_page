@@ -8,39 +8,39 @@ export const CurtainContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   
-  @media only screen and (min-width: ${props => props.theme.breakpoints.s}) {
-    flex-direction: row;
+  @media only screen and (max-width: ${props => props.theme.breakpoints.s}) {
+    flex-direction: column;
   }
 `
 
-export const CurtainTop = styled.div<CurtainProps>`
-  height: 50%;
-  width: 100%;
+export const CurtainLeft = styled.div<CurtainProps>`
+  height: 100%;
+  width: 50%;
+  left: -${props => props.show ? 0 : 50}%;
   background-color: ${props => props.theme.colors.mainDark};
   position: absolute;
-  top: -${props => props.show ? 0 : 50}%;
   transition: 1s;
   transition-timing-function: ease-in-out;
   
-  @media only screen and (min-width: ${props => props.theme.breakpoints.s}) {
-    height: 100%;
-    width: 50%;
-    left: -${props => props.show ? 0 : 50}%;
-    top: auto;
-    bottom: auto;
+  @media only screen and (max-width: ${props => props.theme.breakpoints.s}) {
+    height: 50%;
+    width: 100%;
+    top: -${props => props.show ? 0 : 50}%;
+    left: auto;
+    right: auto;
   }
 `
 
-export const CurtainBottom = styled(CurtainTop)`
+export const CurtainRight = styled(CurtainLeft)`
   background-color: ${props => props.theme.colors.mainGreen};
-  top: auto;
-  bottom: -${props => props.show ? 0 : 50}%;
+  left: auto;
+  right: -${props => props.show ? 0 : 50}%;
   
-  @media only screen and (min-width: ${props => props.theme.breakpoints.s}) {
-    left: auto;
-    right: -${props => props.show ? 0 : 50}%;
+  @media only screen and (max-width: ${props => props.theme.breakpoints.s}) {
+    top: auto;
+    bottom: -${props => props.show ? 0 : 50}%;
   }
 `
