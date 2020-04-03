@@ -7,9 +7,14 @@ const GlobalStyle = createGlobalStyle<ThemeProps<any>>`
   
   html {
     font-family: 'Roboto', sans-serif;
+    font-size: 10px;
   }
   
   input {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  button {
     font-family: 'Roboto', sans-serif;
   }
   

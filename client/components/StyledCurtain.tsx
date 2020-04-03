@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ColorButton } from './StyledButtons'
 
 interface CurtainProps {
   show?: boolean
@@ -28,9 +29,9 @@ export const CurtainLeft = styled.div<CurtainProps>`
   transition: 1s;
   transition-timing-function: ease-in-out;
   color: ${props => props.theme.colors.mainColor};
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: bold;
-  padding: 2rem;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -49,7 +50,8 @@ export const CurtainRight = styled(CurtainLeft)`
   color: ${props => props.theme.colors.mainDark};
   left: auto;
   right: -${props => props.show ? 0 : 50}%;
-  padding-left: 8rem;
+  padding-left: 14rem;
+  justify-content: center;
   
   @media only screen and (max-width: ${props => props.theme.breakpoints.s}) {
     top: auto;
@@ -64,8 +66,8 @@ export const CurtainParagraph = styled.p<CurtainProps>`
 `
 
 export const MiddleLogo = styled.div<CurtainProps>`
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
   z-index: 2;
   display: flex;
   border-radius: 50%;
@@ -91,10 +93,10 @@ export const MiddleLogoRight = styled(MiddleLogoLeft)`
 
 export const DarkV = styled.div`
   position: absolute;
-  width: 1rem;
+  width: 1.5rem;
   height: 80%;
   background-color: ${props => props.theme.colors.mainDark};
-  bottom: 1.5rem;
+  bottom: 2rem;
   transform: rotate(20deg);
   right: 0;
   z-index: 2;
@@ -107,12 +109,22 @@ export const ColorfulV = styled(DarkV)`
   z-index: 1;
 `
 
-export const NameInput = styled.input`
+export const NameInput = styled.input<CurtainProps>`
   border: none;
-  border-bottom: solid 4px ${props => props.theme.colors.mainDark};
+  border-bottom: dashed 4px ${props => props.theme.colors.mainDark};
   color: ${props => props.theme.colors.mainDark};
   width: 100%;
-  font-size: 4rem;
+  font-size: 6rem;
   background-color: ${props => props.theme.colors.mainColor};
   font-weight: bold;
+  opacity: ${props => props.show ? 1 : 0};
+  transition: opacity 1s ease ${props => props.delay}s;
+  margin-top: 4rem;
+`
+
+export const CurtainButton = styled(ColorButton)<CurtainProps>`
+  margin-top: 3rem;
+  width: 100%;
+  opacity: ${props => props.show ? 1 : 0};
+  transition: opacity 1s ease ${props => props.delay}s;
 `
