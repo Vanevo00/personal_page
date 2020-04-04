@@ -5,14 +5,15 @@ import {
   CurtainLeft,
   MiddleLogo,
   MiddleLogoLeft,
-  MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton
+  MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph
 } from './StyledCurtain'
 import VisitorContext from '../context/visitor/visitorContext'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
-  const [showLeftText, setShowLeftText] = useState(true)
   const [visitorName, setVisitorName] = useState('')
+  const [userSpecificText, setUserSpecificText] = useState('')
+  const [rotateLogo, setRotateLogo] = useState(false)
 
   const nameInput = useRef(null)
   const visitorContext = useContext(VisitorContext)
@@ -35,7 +36,17 @@ const Curtain = () => {
   const handleNameSubmission = (name) => {
     localStorage.setItem('visitorName', name)
     visitorContext.setVisitor(name)
-    setShowLeftText(false)
+    if (name === 'Anonymous') {
+      setUserSpecificText('Fair enough..')
+    } else {
+      setUserSpecificText(`Welcome, ${name}!`)
+    }
+    setTimeout(() => {
+      setRotateLogo(true)
+    }, 1000)
+    setTimeout(() => {
+      setShowCurtain(false)
+    }, 2500)
   }
 
   const onSubmit = (e) => {
@@ -51,11 +62,11 @@ const Curtain = () => {
   return (
     <CurtainContainer>
       <CurtainLeft show={showCurtain}>
-        <CurtainParagraph show={showCurtain && showLeftText} delay={showLeftText ? 2.5 : 0}>Hi, my name is Vojta.</CurtainParagraph>
-        <CurtainParagraph show={showCurtain && showLeftText} delay={showLeftText ? 4 : 0}>I am a JavaScript developer.</CurtainParagraph>
+        <CurtainParagraph show={showCurtain} delay={2.5}>Hi, my name is Vojta.</CurtainParagraph>
+        <CurtainParagraph show={showCurtain} delay={4}>I am a JavaScript developer.</CurtainParagraph>
       </CurtainLeft>
 
-      <MiddleLogo show={showCurtain}>
+      <MiddleLogo show={showCurtain} rotate={rotateLogo}>
         <MiddleLogoLeft>
           <DarkV/>
         </MiddleLogoLeft>
@@ -71,6 +82,7 @@ const Curtain = () => {
             <CurtainButton type='submit' show={showCurtain} delay={5.5}>Submit</CurtainButton>
             <CurtainButton show={showCurtain} delay={7.5} onClick={onDeclineName}>I'm not giving my name to a machine!</CurtainButton>
           </form>
+          <UserSpecificParagraph show={showCurtain && !!(userSpecificText)} delay={0}>{userSpecificText}</UserSpecificParagraph>
       </CurtainRight>
     </CurtainContainer>
   )

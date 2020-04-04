@@ -4,6 +4,7 @@ import { ColorButton } from './StyledButtons'
 interface CurtainProps {
   show?: boolean
   delay?: number
+  rotate?: boolean
 }
 
 export const CurtainContainer = styled.div`
@@ -62,7 +63,12 @@ export const CurtainRight = styled(CurtainLeft)`
 export const CurtainParagraph = styled.p<CurtainProps>`
   opacity: ${props => props.show ? 1 : 0};
   transition: opacity 1s ease ${props => props.delay}s;
-  
+`
+
+export const UserSpecificParagraph = styled(CurtainParagraph)`
+  height: 5rem;
+  margin-top: 5rem;
+  font-size: 4rem;
 `
 
 export const MiddleLogo = styled.div<CurtainProps>`
@@ -74,10 +80,7 @@ export const MiddleLogo = styled.div<CurtainProps>`
   overflow: hidden;
   transition: transform 1s, opacity 1s ease 1.5s;
   opacity: ${props => props.show ? 1 : 0};
-  
-  &:hover {
-    transform: rotate(180deg);
-  }
+  transform: rotate(${props => props.rotate ? 180 : 0}deg);
 `
 
 export const MiddleLogoLeft = styled.div`
@@ -96,7 +99,7 @@ export const DarkV = styled.div`
   width: 1.5rem;
   height: 80%;
   background-color: ${props => props.theme.colors.mainDark};
-  bottom: 2rem;
+  bottom: 2.5rem;
   transform: rotate(20deg);
   right: 0;
   z-index: 2;
