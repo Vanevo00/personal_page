@@ -5,7 +5,7 @@ import {
   CurtainLeft,
   MiddleLogo,
   MiddleLogoLeft,
-  MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph
+  MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph, CurtainError
 } from './StyledCurtain'
 import VisitorContext from '../context/visitor/visitorContext'
 
@@ -15,6 +15,7 @@ const Curtain = () => {
   const [visitorName, setVisitorName] = useState('')
   const [userSpecificText, setUserSpecificText] = useState('')
   const [rotateLogo, setRotateLogo] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const nameInput = useRef(null)
   const visitorContext = useContext(VisitorContext)
@@ -50,11 +51,14 @@ const Curtain = () => {
     }, 2500)
     setTimeout(() => {
       setHideWholeCurtain(true)
-    }, 3500)
+    }, 5500)
   }
 
   const onSubmit = (e) => {
     e.preventDefault()
+    if (visitorName.length < 3 || visitorName.length > 15) {
+      return setErrorMessage('your name must be between 3 and 15 characters long')
+    }
     handleNameSubmission(visitorName)
   }
 
@@ -83,6 +87,7 @@ const Curtain = () => {
           <CurtainParagraph show={showCurtain} delay={5.5}>What's your name?</CurtainParagraph>
           <form onSubmit={onSubmit}>
             <NameInput type='text' ref={nameInput} show={showCurtain} delay={5.5} onChange={onChange} value={visitorName}/>
+            <CurtainError>{errorMessage}</CurtainError>
             <CurtainButton type='submit' show={showCurtain} delay={5.5}>Submit</CurtainButton>
             <CurtainButton show={showCurtain} delay={7.5} onClick={onDeclineName}>I'm not giving my name to a machine!</CurtainButton>
           </form>

@@ -71,6 +71,12 @@ export const UserSpecificParagraph = styled(CurtainParagraph)`
   font-size: 4rem;
 `
 
+export const CurtainError = styled.p`
+ font-size: 2rem;
+ color: ${props => props.theme.colors.warning};
+ height: 2rem;
+`
+
 export const MiddleLogo = styled.div<CurtainProps>`
   width: 15rem;
   height: 15rem;

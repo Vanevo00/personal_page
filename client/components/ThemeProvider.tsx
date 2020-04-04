@@ -5,7 +5,8 @@ const theme = {
     mainDark: '#222629',
     darkColor: '#a4a400',
     darkGrey: '#474B4F',
-    lightGrey: '6B6E70'
+    lightGrey: '#6B6E70',
+    warning: '#ce0006'
   },
   fontSizes: {
     xs: '.8rem',
