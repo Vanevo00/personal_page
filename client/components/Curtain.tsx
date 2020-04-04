@@ -11,6 +11,7 @@ import VisitorContext from '../context/visitor/visitorContext'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
+  const [hideWholeCurtain, setHideWholeCurtain] = useState(false)
   const [visitorName, setVisitorName] = useState('')
   const [userSpecificText, setUserSpecificText] = useState('')
   const [rotateLogo, setRotateLogo] = useState(false)
@@ -47,6 +48,9 @@ const Curtain = () => {
     setTimeout(() => {
       setShowCurtain(false)
     }, 2500)
+    setTimeout(() => {
+      setHideWholeCurtain(true)
+    }, 3500)
   }
 
   const onSubmit = (e) => {
@@ -60,7 +64,7 @@ const Curtain = () => {
   }
 
   return (
-    <CurtainContainer>
+    <CurtainContainer show={!hideWholeCurtain}>
       <CurtainLeft show={showCurtain}>
         <CurtainParagraph show={showCurtain} delay={2.5}>Hi, my name is Vojta.</CurtainParagraph>
         <CurtainParagraph show={showCurtain} delay={4}>I am a JavaScript developer.</CurtainParagraph>

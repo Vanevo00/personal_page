@@ -7,10 +7,10 @@ interface CurtainProps {
   rotate?: boolean
 }
 
-export const CurtainContainer = styled.div`
+export const CurtainContainer = styled.div<CurtainProps>`
   width: 100%;
   height: 100vh;
-  display: flex;
+  display: ${props => props.show ? 'flex' : 'none'};
   flex-direction: row;
   position: relative;
   justify-content: center;
