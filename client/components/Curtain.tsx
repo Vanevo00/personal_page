@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {
   CurtainRight,
   CurtainContainer,
@@ -7,12 +7,14 @@ import {
   MiddleLogoLeft,
   MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton
 } from './StyledCurtain'
+import VisitorContext from '../context/visitor/visitorContext'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
   const [visitorName, setVisitorName] = useState('')
 
   const nameInput = useRef(null)
+  const visitorContext = useContext(VisitorContext)
 
   const onChange = (e) => {
     setVisitorName(e.target.value)
@@ -20,10 +22,14 @@ const Curtain = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log(visitorName)
+    localStorage.setItem('visitorName', visitorName)
+    visitorContext.setVisitor(visitorName)
   }
 
   useEffect(() => {
+    if (localStorage.visitorName) {
+      visitorContext.setVisitor(localStorage.visitorName)
+    }
     setShowCurtain(true)
     setTimeout(() => {
       nameInput.current.focus()

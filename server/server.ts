@@ -18,5 +18,6 @@ app.use(cors()) // enable CORS
 app.get('/', (req: Request, res: Response) => res.send('Welcome to my personal page API'))
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))
+app.use('/api/visitors', require('./routes/visitors'))
 
 app.listen(port, () => console.log(`API listening on port ${port}`))

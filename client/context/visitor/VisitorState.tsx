@@ -4,6 +4,7 @@ import {
   SET_VISITOR
 } from '../types'
 import VisitorContext from './visitorContext'
+import axios from 'axios'
 
 const VisitorState = (props: any) => {
   const initialState = {
@@ -12,7 +13,9 @@ const VisitorState = (props: any) => {
 
   const [state, dispatch] = useReducer(visitorReducer, initialState)
 
-  const setVisitor = (name) => {
+  const setVisitor = async (name) => {
+    await axios.post(`${window.location.protocol}//${window.location.hostname}:5050/api/visitors`, {name: name})
+
     dispatch({type: SET_VISITOR, payload: name})
   }
 

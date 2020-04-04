@@ -7,4 +7,8 @@ export const ColorButton = styled.button`
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+  
+  &:focus {
+    outline: 0;
+  }
 `
