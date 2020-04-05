@@ -3,32 +3,31 @@ import {
   CurtainRight,
   CurtainContainer,
   CurtainLeft,
-  MiddleLogo,
-  MiddleLogoLeft,
-  MiddleLogoRight, DarkV, ColorfulV, CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph, CurtainError
+  CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph, CurtainError
 } from './StyledCurtain'
-import VisitorContext from '../context/visitor/visitorContext'
+import MainContext from '../context/main/mainContext'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
   const [hideWholeCurtain, setHideWholeCurtain] = useState(false)
   const [visitorName, setVisitorName] = useState('')
   const [userSpecificText, setUserSpecificText] = useState('')
-  const [rotateLogo, setRotateLogo] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   const nameInput = useRef(null)
-  const visitorContext = useContext(VisitorContext)
+  const mainContext = useContext(MainContext)
 
   useEffect(() => {
     if (localStorage.visitorName) {
-      visitorContext.setVisitor(localStorage.visitorName)
-    }
-    setShowCurtain(true)
+      mainContext.setVisitor(localStorage.visitorName)
+      setHideWholeCurtain(true)
+    } else {
+      setShowCurtain(true)
 
-    setTimeout(() => {
-      nameInput.current.focus()
-    }, 6500)
+      setTimeout(() => {
+        nameInput.current.focus()
+      }, 6500)
+    }
   }, [])
 
   const onChange = (e) => {
@@ -37,15 +36,12 @@ const Curtain = () => {
 
   const handleNameSubmission = (name) => {
     localStorage.setItem('visitorName', name)
-    visitorContext.setVisitor(name)
+    mainContext.setVisitor(name)
     if (name === 'Anonymous') {
       setUserSpecificText('Fair enough..')
     } else {
       setUserSpecificText(`Welcome, ${name}!`)
     }
-    setTimeout(() => {
-      setRotateLogo(true)
-    }, 1000)
     setTimeout(() => {
       setShowCurtain(false)
     }, 2500)
@@ -73,15 +69,6 @@ const Curtain = () => {
         <CurtainParagraph show={showCurtain} delay={2.5}>Hi, my name is Vojta.</CurtainParagraph>
         <CurtainParagraph show={showCurtain} delay={4}>I am a JavaScript developer.</CurtainParagraph>
       </CurtainLeft>
-
-      <MiddleLogo show={showCurtain} rotate={rotateLogo}>
-        <MiddleLogoLeft>
-          <DarkV/>
-        </MiddleLogoLeft>
-        <MiddleLogoRight>
-          <ColorfulV/>
-        </MiddleLogoRight>
-      </MiddleLogo>
 
       <CurtainRight show={showCurtain}>
           <CurtainParagraph show={showCurtain} delay={5.5}>What's your name?</CurtainParagraph>

@@ -5,6 +5,6 @@ interface ContextInterface {
   setVisitor?: Function
 }
 
-const VisitorContext: Context<ContextInterface> = createContext(null)
+const MainContext: Context<ContextInterface> = createContext(null)
 
-export default VisitorContext
+export default MainContext

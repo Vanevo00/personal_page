@@ -1,17 +1,17 @@
 import React, { useReducer } from "react"
-import visitorReducer from './visitorReducer'
+import mainReducer from './mainReducer'
 import {
   SET_VISITOR
 } from '../types'
-import VisitorContext from './visitorContext'
+import MainContext from './mainContext'
 import axios from 'axios'
 
-const VisitorState = (props: any) => {
+const MainState = (props: any) => {
   const initialState = {
     visitor: null
   }
 
-  const [state, dispatch] = useReducer(visitorReducer, initialState)
+  const [state, dispatch] = useReducer(mainReducer, initialState)
 
   const setVisitor = async (name) => {
     await axios.post(`${window.location.protocol}//${window.location.hostname}:5050/api/visitors`, {name: name})
@@ -21,15 +21,15 @@ const VisitorState = (props: any) => {
 
 
   return (
-    <VisitorContext.Provider
+    <MainContext.Provider
       value={{
         visitor: state.visitor,
         setVisitor
       }}
 >
   { props.children }
-  </VisitorContext.Provider>
+  </MainContext.Provider>
 )
 }
 
-export default VisitorState
+export default MainState

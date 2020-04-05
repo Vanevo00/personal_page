@@ -15,6 +15,7 @@ export const CurtainContainer = styled.div<CurtainProps>`
   position: relative;
   justify-content: center;
   align-items: center;
+  z-index:2;
   
   @media only screen and (max-width: ${props => props.theme.breakpoints.s}) {
     flex-direction: column;
@@ -75,47 +76,6 @@ export const CurtainError = styled.p`
  font-size: 2rem;
  color: ${props => props.theme.colors.warning};
  height: 2rem;
-`
-
-export const MiddleLogo = styled.div<CurtainProps>`
-  width: 15rem;
-  height: 15rem;
-  z-index: 2;
-  display: flex;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 1s, opacity 1s ease 1.5s;
-  opacity: ${props => props.show ? 1 : 0};
-  transform: rotate(${props => props.rotate ? 180 : 0}deg);
-`
-
-export const MiddleLogoLeft = styled.div`
-  width: 50%;
-  height: 100%;
-  background-color: ${props => props.theme.colors.mainColor};
-  position: relative;
-`
-
-export const MiddleLogoRight = styled(MiddleLogoLeft)`
-  background-color: ${props => props.theme.colors.mainDark};
-`
-
-export const DarkV = styled.div`
-  position: absolute;
-  width: 1.5rem;
-  height: 80%;
-  background-color: ${props => props.theme.colors.mainDark};
-  bottom: 2.5rem;
-  transform: rotate(20deg);
-  right: 0;
-  z-index: 2;
-`
-
-export const ColorfulV = styled(DarkV)`
-  background-color: ${props => props.theme.colors.mainColor};
-  transform: rotate(-20deg);
-  left: 0;
-  z-index: 1;
 `
 
 export const NameInput = styled.input<CurtainProps>`

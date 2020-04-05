@@ -7,7 +7,7 @@ const { check, validationResult } = require('express-validator')
 const Visitor = require('../models/Visitor')
 
 //@route  POST api/visitors
-//@desc   add a visitor
+//@desc   add a main
 //@access Public
 router.post('/', [
   check('name', 'name is required').not().isEmpty()
