@@ -5,11 +5,13 @@ interface ContextInterface {
   isLogoShowing: boolean
   isLogoRotated: boolean
   isMainContentShowing: boolean
+  isMainContentTextShowing: boolean
   setVisitor: Function
   showLogo: Function
   hideLogo: Function
   rotateLogo: Function
   showMainContent: Function
+  showMainContentText: Function
 }
 
 const MainContext: Context<ContextInterface> = createContext(null)

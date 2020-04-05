@@ -3,7 +3,7 @@ import mainReducer from './mainReducer'
 import {
   SET_VISITOR,
   SHOW_LOGO,
-  HIDE_LOGO, ROTATE_LOGO, SHOW_MAIN_CONTENT
+  HIDE_LOGO, ROTATE_LOGO, SHOW_MAIN_CONTENT, SHOW_MAIN_CONTENT_TEXT
 } from '../types'
 import MainContext from './mainContext'
 import axios from 'axios'
@@ -13,7 +13,8 @@ const MainState = (props: any) => {
     visitor: null,
     isLogoShowing: false,
     isLogoRotated: false,
-    isMainContentShowing: false
+    isMainContentShowing: false,
+    isMainContentTextShowing: false
   }
 
   const [state, dispatch] = useReducer(mainReducer, initialState)
@@ -40,6 +41,10 @@ const MainState = (props: any) => {
     dispatch({type: SHOW_MAIN_CONTENT})
   }
 
+  const showMainContentText = () => {
+    dispatch({type: SHOW_MAIN_CONTENT_TEXT})
+  }
+
   return (
     <MainContext.Provider
       value={{
@@ -47,11 +52,13 @@ const MainState = (props: any) => {
         isLogoShowing: state.isLogoShowing,
         isLogoRotated: state.isLogoRotated,
         isMainContentShowing: state.isMainContentShowing,
+        isMainContentTextShowing: state.isMainContentTextShowing,
         setVisitor,
         showLogo,
         hideLogo,
         rotateLogo,
-        showMainContent
+        showMainContent,
+        showMainContentText
       }}
 >
   { props.children }

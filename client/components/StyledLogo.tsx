@@ -28,6 +28,12 @@ export const StyledLogo = styled.div<LogoProps>`
   transform: rotate(-${props => props.rotate ? 180 : 0}deg);
 `
 
+export const SmallLogo = styled(StyledLogo)`
+  width: 5rem;
+  height: 5rem;
+  margin: 2rem 0 0 1rem;
+`
+
 export const LogoLeft = styled.div`
   width: 50%;
   height: 100%;
@@ -50,7 +56,19 @@ export const DarkV = styled.div`
   z-index: 3;
 `
 
+export const SmallDarkV = styled(DarkV)`
+  width: .5rem;
+  bottom: 1rem;
+`
+
 export const ColorfulV = styled(DarkV)`
+  background-color: ${props => props.theme.colors.mainColor};
+  transform: rotate(-20deg);
+  left: 0;
+  z-index: 2;
+`
+
+export const SmallColorfulV = styled(SmallDarkV)`
   background-color: ${props => props.theme.colors.mainColor};
   transform: rotate(-20deg);
   left: 0;

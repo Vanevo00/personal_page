@@ -56,6 +56,7 @@ const Curtain = () => {
     }, 4000)
     setTimeout(() => {
       setHideWholeCurtain(true)
+      mainContext.showMainContentText()
     }, 5500)
   }
 
