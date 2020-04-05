@@ -1,14 +1,17 @@
 import React, { useReducer } from "react"
 import mainReducer from './mainReducer'
 import {
-  SET_VISITOR
+  SET_VISITOR,
+  SHOW_LOGO,
+  HIDE_LOGO
 } from '../types'
 import MainContext from './mainContext'
 import axios from 'axios'
 
 const MainState = (props: any) => {
   const initialState = {
-    visitor: null
+    visitor: null,
+    isLogoShowing: false
   }
 
   const [state, dispatch] = useReducer(mainReducer, initialState)
@@ -19,12 +22,23 @@ const MainState = (props: any) => {
     dispatch({type: SET_VISITOR, payload: name})
   }
 
+  const showLogo = () => {
+    dispatch({type: SHOW_LOGO})
+  }
+
+  const hideLogo = () => {
+    dispatch({type: HIDE_LOGO})
+  }
+
 
   return (
     <MainContext.Provider
       value={{
         visitor: state.visitor,
-        setVisitor
+        isLogoShowing: state.isLogoShowing,
+        setVisitor,
+        showLogo,
+        hideLogo
       }}
 >
   { props.children }

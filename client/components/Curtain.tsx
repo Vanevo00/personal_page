@@ -23,7 +23,9 @@ const Curtain = () => {
       setHideWholeCurtain(true)
     } else {
       setShowCurtain(true)
-
+      setTimeout(() => {
+        mainContext.showLogo()
+      }, 1500)
       setTimeout(() => {
         nameInput.current.focus()
       }, 6500)
@@ -45,6 +47,9 @@ const Curtain = () => {
     setTimeout(() => {
       setShowCurtain(false)
     }, 2500)
+    setTimeout(() => {
+      mainContext.hideLogo()
+    }, 4000)
     setTimeout(() => {
       setHideWholeCurtain(true)
     }, 5500)

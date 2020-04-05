@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
   ColorfulV,
   DarkV,
@@ -7,11 +7,14 @@ import {
   LogoLeft,
   LogoRight
 } from './StyledLogo'
+import MainContext from '../context/main/mainContext'
 
 const Logo = () => {
+  const mainContext = useContext(MainContext)
+
   return (
     <LogoContainer>
-      <StyledLogo>
+      <StyledLogo show={mainContext.isLogoShowing}>
         <LogoLeft>
           <DarkV/>
         </LogoLeft>

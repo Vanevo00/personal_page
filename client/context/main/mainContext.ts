@@ -2,7 +2,10 @@ import { createContext, Context } from 'react'
 
 interface ContextInterface {
   visitor: string
-  setVisitor?: Function
+  isLogoShowing: boolean
+  setVisitor: Function
+  showLogo: Function
+  hideLogo: Function
 }
 
 const MainContext: Context<ContextInterface> = createContext(null)

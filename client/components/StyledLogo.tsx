@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface LogoProps {
+  show: boolean
+}
+
 export const LogoContainer = styled.div`
   width: 100%;
   height: 100vh;
@@ -11,7 +15,7 @@ export const LogoContainer = styled.div`
   transition: 2s;
 `
 
-export const StyledLogo = styled.div`
+export const StyledLogo = styled.div<LogoProps>`
   width: 15rem;
   height: 15rem;
   z-index: 2;
@@ -19,10 +23,10 @@ export const StyledLogo = styled.div`
   border-radius: 50%;
   overflow: hidden;
   transition: 1s;
-  opacity: 1;
+  opacity: ${props => props.show ? 1 : 0};
   
   &:hover {
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
   }
 `
 
