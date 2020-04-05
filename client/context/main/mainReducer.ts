@@ -1,6 +1,6 @@
 import {
   HIDE_LOGO, ROTATE_LOGO,
-  SET_VISITOR, SHOW_LOGO
+  SET_VISITOR, SHOW_LOGO, SHOW_MAIN_CONTENT
 } from '../types'
 
 export default (state: any, action: any) => {
@@ -25,6 +25,11 @@ export default (state: any, action: any) => {
       return {
         ...state,
         isLogoRotated: true
+      }
+    case SHOW_MAIN_CONTENT:
+      return {
+        ...state,
+        isMainContentShowing: true
       }
     default:
       return state

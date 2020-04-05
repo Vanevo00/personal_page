@@ -39,6 +39,7 @@ const Curtain = () => {
   const handleNameSubmission = (name) => {
     localStorage.setItem('visitorName', name)
     mainContext.setVisitor(name)
+    mainContext.showMainContent()
     if (name === 'Anonymous') {
       setUserSpecificText('Fair enough..')
     } else {
