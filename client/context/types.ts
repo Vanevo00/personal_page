@@ -10,4 +10,5 @@ export const SET_ERROR = 'SET_ERROR'
 export const SET_VISITOR = 'SET_VISITOR'
 export const SHOW_LOGO = 'SHOW_LOGO'
 export const HIDE_LOGO = 'HIDE_LOGO'
+export const ROTATE_LOGO = 'ROTATE_LOGO'
 

@@ -45,6 +45,9 @@ const Curtain = () => {
       setUserSpecificText(`Welcome, ${name}!`)
     }
     setTimeout(() => {
+      mainContext.rotateLogo()
+    }, 1000)
+    setTimeout(() => {
       setShowCurtain(false)
     }, 2500)
     setTimeout(() => {

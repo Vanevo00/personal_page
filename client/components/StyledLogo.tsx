@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 interface LogoProps {
   show: boolean
+  rotate: boolean
 }
 
 export const LogoContainer = styled.div`
@@ -24,10 +25,7 @@ export const StyledLogo = styled.div<LogoProps>`
   overflow: hidden;
   transition: 1s;
   opacity: ${props => props.show ? 1 : 0};
-  
-  &:hover {
-    transform: rotate(-180deg);
-  }
+  transform: rotate(-${props => props.rotate ? 180 : 0}deg);
 `
 
 export const LogoLeft = styled.div`

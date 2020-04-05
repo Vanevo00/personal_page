@@ -14,7 +14,7 @@ const Logo = () => {
 
   return (
     <LogoContainer>
-      <StyledLogo show={mainContext.isLogoShowing}>
+      <StyledLogo show={mainContext.isLogoShowing} rotate={mainContext.isLogoRotated}>
         <LogoLeft>
           <DarkV/>
         </LogoLeft>
