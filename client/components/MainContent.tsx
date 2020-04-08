@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { MainContentContainer, MainContentText } from './StyledMainContent'
 import MainContext from '../context/main/mainContext'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
+import Navbar from './Navbar'
 
 const MainContent = () => {
   const mainContext = useContext(MainContext)
@@ -28,16 +29,9 @@ const MainContent = () => {
 
   return (
     <MainContentContainer>
-      <SmallLogo show={mainContext.isMainContentTextShowing} rotate={true}>
-        <LogoLeft>
-          <SmallDarkV/>
-        </LogoLeft>
-        <LogoRight>
-          <SmallColorfulV/>
-        </LogoRight>
-      </SmallLogo>
+      <Navbar/>
       <MainContentText show={mainContext.isMainContentTextShowing}>
-          PES
+
       </MainContentText>
     </MainContentContainer>
   )

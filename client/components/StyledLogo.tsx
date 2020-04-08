@@ -31,7 +31,11 @@ export const StyledLogo = styled.div<LogoProps>`
 export const SmallLogo = styled(StyledLogo)`
   width: 5rem;
   height: 5rem;
-  margin: 2rem 0 0 1rem;
+  
+  &:hover {
+    transform: rotateZ(360deg);
+    transition: .5s;
+  }
 `
 
 export const LogoLeft = styled.div`
