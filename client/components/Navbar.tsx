@@ -39,8 +39,8 @@ const Navbar = ({show} : Props) => {
         </Link>
       </MiddleMenu>
       <UserInfo show={show}>
-        <Link href='/login' active={pathname === '/register'}>
-          <MenuLink>LOGIN</MenuLink>
+        <Link href='/login'>
+          <MenuLink active={pathname === '/login'}>LOGIN</MenuLink>
         </Link>
         <Link href='/register'>
           <MenuLink last={true} active={pathname === '/register'}>REGISTER</MenuLink>
