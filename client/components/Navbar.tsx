@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
 import { MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
@@ -8,10 +8,10 @@ interface Props {
 }
 
 const Navbar = ({show} : Props) => {
-  let pathname
+  const [pathname, setPathname] = useState('')
 
   useEffect(() => {
-    pathname = window.location.pathname
+    setPathname(window.location.pathname)
   }, [])
 
   return (
@@ -39,11 +39,11 @@ const Navbar = ({show} : Props) => {
         </Link>
       </MiddleMenu>
       <UserInfo show={show}>
-        <Link href='/login'>
+        <Link href='/login' active={pathname === '/register'}>
           <MenuLink>LOGIN</MenuLink>
         </Link>
         <Link href='/register'>
-          <MenuLink last={true}>REGISTER</MenuLink>
+          <MenuLink last={true} active={pathname === '/register'}>REGISTER</MenuLink>
         </Link>
       </UserInfo>
     </NavbarContainer>
