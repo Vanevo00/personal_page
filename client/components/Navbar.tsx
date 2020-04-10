@@ -1,15 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
-import MainContext from '../context/main/mainContext'
 import { MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
 
-const Navbar = () => {
-  const mainContext = useContext(MainContext)
+interface Props {
+  show: boolean
+}
+
+const Navbar = ({show} : Props) => {
+  let pathname
+
+  useEffect(() => {
+    pathname = window.location.pathname
+  }, [])
 
   return (
     <NavbarContainer>
-      <SmallLogo show={mainContext.isMainContentTextShowing} rotate={true}>
+      <SmallLogo show={show} rotate={true}>
         <LogoLeft>
           <SmallDarkV/>
         </LogoLeft>
@@ -17,9 +24,9 @@ const Navbar = () => {
           <SmallColorfulV/>
         </LogoRight>
       </SmallLogo>
-      <MiddleMenu show={mainContext.isMainContentTextShowing}>
+      <MiddleMenu show={show}>
         <Link href='/'>
-          <MenuLink active={true}>HOME</MenuLink>
+          <MenuLink active={pathname === '/'}>HOME</MenuLink>
         </Link>
         <Link href='/'>
           <MenuLink>ITEM</MenuLink>
@@ -31,7 +38,14 @@ const Navbar = () => {
           <MenuLink last={true}>ITEM</MenuLink>
         </Link>
       </MiddleMenu>
-      <UserInfo show={mainContext.isMainContentTextShowing}>LOG IN REGISTER</UserInfo>
+      <UserInfo show={show}>
+        <Link href='/login'>
+          <MenuLink>LOGIN</MenuLink>
+        </Link>
+        <Link href='/register'>
+          <MenuLink last={true}>REGISTER</MenuLink>
+        </Link>
+      </UserInfo>
     </NavbarContainer>
   )
 }

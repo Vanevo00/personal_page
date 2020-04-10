@@ -22,6 +22,7 @@ export const MiddleMenu = styled.div<NavbarProps>`
   opacity: ${props => props.show ? 1 : 0};
   transition: 1s;
   transition-delay: 1s;
+  z-index: 1;
 `
 
 export const UserInfo = styled(MiddleMenu)`
