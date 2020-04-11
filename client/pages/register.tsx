@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import { AuthContainer, DescriptionParagraph, LeftSide, ListItem, RightSide } from '../components/auth/StyledAuth'
+import RegisterForm from '../components/auth/RegisterForm'
 
 const Register = () => {
   return (
@@ -19,7 +20,7 @@ const Register = () => {
           </ul>
         </LeftSide>
         <RightSide>
-          RightSide
+          <RegisterForm/>
         </RightSide>
       </AuthContainer>
     </>

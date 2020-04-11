@@ -12,3 +12,7 @@ export const ColorButton = styled.button`
     outline: 0;
   }
 `
+
+export const ColorButtonNoBorder = styled(ColorButton)`
+  border: none;
+`

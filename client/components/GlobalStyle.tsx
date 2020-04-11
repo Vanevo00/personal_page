@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle<ThemeProps<any>>`
   
   input {
     font-family: 'Roboto', sans-serif;
+    color: ${props => props.theme.colors.mainText};
   }
   
   button {
