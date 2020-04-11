@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
 import { MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
+import AuthContext from '../context/auth/authContext'
 
 interface Props {
   show: boolean
 }
 
 const Navbar = ({show} : Props) => {
+  const authContext = useContext(AuthContext)
   const [pathname, setPathname] = useState('')
 
   useEffect(() => {
     setPathname(window.location.pathname)
+    authContext.loadUser()
   }, [])
 
   return (
