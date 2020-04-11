@@ -32,7 +32,7 @@ const MainContent = () => {
     <GeneralContainer>
       <Navbar show={mainContext.isMainContentTextShowing}/>
       <MainContentText show={mainContext.isMainContentTextShowing}>
-
+        Please do not take design of this page into account as I am merely a coder and not a designer.
       </MainContentText>
     </GeneralContainer>
   )
