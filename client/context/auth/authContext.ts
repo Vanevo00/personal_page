@@ -12,7 +12,10 @@ interface ContextInterface {
     error: string
     isAdmin: boolean
   }
-  error: string
+  error: [{
+    param: string
+    msg: string
+  }]
   register: Function
   login: Function
   logout: Function

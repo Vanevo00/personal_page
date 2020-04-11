@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { AuthContainer, DescriptionParagraph, LeftSide, ListItem, RightSide } from '../components/auth/StyledAuth'
 import RegisterForm from '../components/auth/RegisterForm'

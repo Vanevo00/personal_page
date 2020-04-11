@@ -41,6 +41,10 @@ export const FormContainer = styled.form`
   flex-wrap: wrap;
   margin-right: 5rem;
 `
+export const InputContainer = styled.div`
+  margin-bottom: 1rem;
+  width: 100%;
+`
 
 export const FormLabel = styled.label`
   font-size: ${props => props.theme.fontSizes.m};
@@ -55,5 +59,10 @@ export const FormInput = styled.input`
   color: ${props => props.theme.colors.mainColor};
   font-size: ${props => props.theme.fontSizes.l};
   padding-left: 1rem;
-  margin-bottom: 1rem;
+`
+
+export const ValidationText = styled.p`
+ width: 100%;
+ color: ${props => props.theme.colors.warning};
+ font-size: ${props => props.theme.fontSizes.m};
 `
