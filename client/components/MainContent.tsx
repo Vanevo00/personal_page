@@ -8,7 +8,7 @@ const MainContent = () => {
   const mainContext = useContext(MainContext)
 
   useEffect(() => {
-    if (localStorage.visitorName) {
+    if (localStorage.visitorName && !mainContext.wasMainPageVisited) {
       mainContext.showMainContent()
       mainContext.rotateLogo()
       setTimeout(() => {
@@ -19,6 +19,7 @@ const MainContent = () => {
       }, 2000)
       setTimeout(() => {
         mainContext.showMainContentText()
+        mainContext.mainPageVisited()
       },3500)
     }
   },[])

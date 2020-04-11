@@ -1,5 +1,5 @@
 import {
-  HIDE_LOGO, ROTATE_LOGO,
+  HIDE_LOGO, MAIN_PAGE_VISITED, ROTATE_LOGO,
   SET_VISITOR, SHOW_LOGO, SHOW_MAIN_CONTENT, SHOW_MAIN_CONTENT_TEXT
 } from '../types'
 
@@ -35,6 +35,11 @@ export default (state: any, action: any) => {
       return {
         ...state,
         isMainContentTextShowing: true
+      }
+    case MAIN_PAGE_VISITED:
+      return {
+        ...state,
+        wasMainPageVisited: true
       }
     default:
       return state
