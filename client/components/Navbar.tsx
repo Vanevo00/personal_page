@@ -42,12 +42,28 @@ const Navbar = ({show} : Props) => {
         </Link>
       </MiddleMenu>
       <UserInfo show={show}>
-        <Link href='/login'>
-          <MenuLink active={pathname === '/login'}>LOGIN</MenuLink>
-        </Link>
-        <Link href='/register'>
-          <MenuLink last={true} active={pathname === '/register'}>REGISTER</MenuLink>
-        </Link>
+        {
+          authContext.user
+          ?
+            <>
+              <Link href='#'>
+                <MenuLink active={false}>{authContext.user.name}</MenuLink>
+              </Link>
+              <Link href='/register'>
+                <MenuLink last={true} active={pathname === '/register'}>LOGOUT</MenuLink>
+              </Link>
+            </>
+          :
+            <>
+              <Link href='/login'>
+                <MenuLink active={pathname === '/login'}>LOGIN</MenuLink>
+              </Link>
+              <Link href='/register'>
+                <MenuLink last={true} active={pathname === '/register'}>REGISTER</MenuLink>
+              </Link>
+            </>
+        }
+
       </UserInfo>
     </NavbarContainer>
   )
