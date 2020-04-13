@@ -52,6 +52,10 @@ const AuthState = (props: any) => {
       })
 
       loadUser()
+
+      setTimeout(() => {
+        window.location.replace('/')
+      }, 1000)
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
