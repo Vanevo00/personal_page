@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
-import { MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
+import { MenuButton, MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
 import AuthContext from '../context/auth/authContext'
 
 interface Props {
@@ -49,9 +49,7 @@ const Navbar = ({show} : Props) => {
               <Link href='#'>
                 <MenuLink active={false}>{authContext.user.name}</MenuLink>
               </Link>
-              <Link href='/register'>
-                <MenuLink last={true} active={pathname === '/register'}>LOGOUT</MenuLink>
-              </Link>
+              <MenuButton last={true}>LOGOUT</MenuButton>
             </>
           :
             <>

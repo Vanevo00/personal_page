@@ -42,3 +42,19 @@ export const MenuLink = styled.a<NavbarProps>`
     border-color: ${props => props.theme.colors.mainColor};
   }
 `
+
+export const MenuButton = styled.button<NavbarProps>`
+  background-color: ${props => props.theme.colors.mainDark};
+  color: ${props => props.theme.colors.mainColor};
+  font-weight: bold;
+  font-size: ${props => props.theme.fontSizes.xl};
+  margin-right: ${props => props.last ? 0 : '2rem'};
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid ${props => props.theme.colors.mainDark};
+  transition: .4s;
+  
+  &:hover {
+    border-color: ${props => props.theme.colors.mainColor};
+  }
+`

@@ -13,7 +13,7 @@ export const LeftSide = styled.div`
 `
 
 export const DescriptionParagraph = styled.p`
-  font-size: ${props => props.theme.fontSizes.xl};
+  font-size: ${props => props.theme.fontSizes.xxl};
 `
 
 export const ListItem = styled.li`
