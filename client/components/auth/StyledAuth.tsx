@@ -66,3 +66,10 @@ export const ValidationText = styled.p`
  color: ${props => props.theme.colors.warning};
  font-size: ${props => props.theme.fontSizes.m};
 `
+
+export const SuccessMessage = styled.div`
+  font-size: ${props => props.theme.fontSizes.l};
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+`

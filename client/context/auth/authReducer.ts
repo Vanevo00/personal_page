@@ -26,6 +26,7 @@ export default (state: any, action: any) => {
         ...state,
         ...action.payload, //just the token
         isAuthenticated: true,
+        error: null,
         loading: false
       }
     case REGISTER_FAIL:

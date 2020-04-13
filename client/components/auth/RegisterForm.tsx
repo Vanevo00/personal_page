@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FormContainer, FormInput, FormLabel, InputContainer, ValidationText } from './StyledAuth'
+import Router from 'next/router'
+import { FormContainer, FormInput, FormLabel, InputContainer, SuccessMessage, ValidationText } from './StyledAuth'
 import { ColorButtonNoBorder } from '../StyledButtons'
 import AuthContext from '../../context/auth/authContext'
 import MainContext from '../../context/main/mainContext'
@@ -15,6 +16,9 @@ const RegisterForm = () => {
   })
 
   useEffect(() => {
+    if(localStorage.token) {
+      Router.push('/')
+    }
     if (localStorage.visitorName) {
       mainContext.setVisitor(localStorage.visitorName)
     }
@@ -72,6 +76,7 @@ const RegisterForm = () => {
           <FormInput type='password' name='confirmPassword' value={inputValues.confirmPassword} onChange={onChange}/>
         </InputContainer>
         <ColorButtonNoBorder type='submit'>Register</ColorButtonNoBorder>
+        {authContext.isAuthenticated && <SuccessMessage>Successfully Registered! Redirecting..</SuccessMessage>}
       </FormContainer>
     </>
   )
