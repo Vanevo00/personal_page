@@ -53,8 +53,30 @@ export const MenuButton = styled.button<NavbarProps>`
   border: none;
   border-bottom: 2px solid ${props => props.theme.colors.mainDark};
   transition: .4s;
+  position: relative;
   
   &:hover {
     border-color: ${props => props.theme.colors.mainColor};
   }
+  
+  &:focus {
+    outline: none;
+  }
+`
+
+export const ConfirmationContainer = styled.div<NavbarProps>`
+  width: 200px;
+  height: 100px;
+  border-radius: 4px;
+  top: 80px;
+  right: ${props => props.show ? '50px' : '-200px'};
+  transition: .4s;
+  position: absolute;
+  
+  background-color: ${props => props.theme.colors.darkGrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.colors.mainColor};
+  overflow: hidden;
 `

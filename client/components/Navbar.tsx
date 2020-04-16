@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
-import { MenuButton, MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
+import { ConfirmationContainer, MenuButton, MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
 import AuthContext from '../context/auth/authContext'
 
 interface Props {
@@ -10,12 +10,34 @@ interface Props {
 
 const Navbar = ({show} : Props) => {
   const authContext = useContext(AuthContext)
+  const confirmationWindow = useRef();
   const [pathname, setPathname] = useState('')
+  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false)
 
   useEffect(() => {
     setPathname(window.location.pathname)
     authContext.loadUser()
+    document.addEventListener("mousedown", handleClick)
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
   }, [])
+
+  const handleClick = (e) => {
+    // @ts-ignore
+    if (confirmationWindow.current.contains(e.target)) {
+      return;
+    }
+    setShowLogoutConfirmation(false)
+  }
+
+  const handleLogoutClick = () => {
+    setShowLogoutConfirmation(true)
+  }
+
+  const handleCancelClick = () => {
+    setShowLogoutConfirmation(false)
+  }
 
   return (
     <NavbarContainer>
@@ -49,7 +71,12 @@ const Navbar = ({show} : Props) => {
               <Link href='#'>
                 <MenuLink active={false}>{authContext.user.name}</MenuLink>
               </Link>
-              <MenuButton last={true}>LOGOUT</MenuButton>
+              <MenuButton last={true} onClick={handleLogoutClick}>LOGOUT</MenuButton>
+              <ConfirmationContainer show={showLogoutConfirmation} ref={confirmationWindow}>
+                Are you sure you want to logout?
+                <button>Logout</button>
+                <button onClick={handleCancelClick}>Close</button>
+              </ConfirmationContainer>
             </>
           :
             <>
