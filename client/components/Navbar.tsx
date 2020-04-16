@@ -39,6 +39,10 @@ const Navbar = ({show} : Props) => {
     setShowLogoutConfirmation(false)
   }
 
+  const handleConfirmClick = () => {
+    authContext.logout()
+  }
+
   return (
     <NavbarContainer>
       <SmallLogo show={show} rotate={true}>
@@ -74,7 +78,7 @@ const Navbar = ({show} : Props) => {
               <MenuButton last={true} onClick={handleLogoutClick}>LOGOUT</MenuButton>
               <ConfirmationContainer show={showLogoutConfirmation} ref={confirmationWindow}>
                 Are you sure you want to logout?
-                <button>Logout</button>
+                <button onClick={handleConfirmClick}>Logout</button>
                 <button onClick={handleCancelClick}>Close</button>
               </ConfirmationContainer>
             </>
