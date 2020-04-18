@@ -74,15 +74,23 @@ const AuthState = (props: any) => {
       })
 
       loadUser()
+
+      setTimeout(() => {
+        window.location.replace('/')
+      }, 1000)
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
-        payload: err.response.data.msg
+        payload: err.response.data
       })
     }
   }
 
-  const logout = () => dispatch({ type: LOGOUT })
+  const logout = () => {
+    dispatch({ type: LOGOUT })
+
+    window.location.replace('/')
+  }
 
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS })
 

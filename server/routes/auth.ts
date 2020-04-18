@@ -26,27 +26,41 @@ router.get('/', auth, async (req: any, res: Response) => {
 //@desc   auth user and get token
 //@access Public
 router.post ('/', [
-  check('email', 'please include a valid email').isEmail(),
+  check('nameOrEmail', 'name or email is required').exists(),
   check('password', 'password is required ').exists()
 ], async (req: Request, res: Response) => {
   const errors = validationResult(req)
   if(!errors.isEmpty()) {
-    return res.status(400).json({msg: errors.array()[0].msg})
+    return res.status(400).json(errors.array())
   }
 
-  const { email, password } = req.body
+  const { nameOrEmail, password } = req.body
 
   try {
-    let user =  await User.findOne({email})
+    let user =  await User.findOne({email: nameOrEmail})
 
     if (!user) {
-      return res.status(400).json({msg: 'Invalid Credentials'})
+      user =  await User.findOne({name: nameOrEmail})
+    }
+
+    if (!user) {
+      return res.status(400).json(
+        [{
+          'msg': 'invalid credentials',
+          'param': 'nameOrEmail'
+        }]
+      )
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-      return res.status(400).json({msg: 'Invalid Password'})
+      return res.status(400).json(
+        [{
+          'msg': 'invalid password',
+          'param': 'password'
+        }]
+      )
     }
 
     //json web token creation

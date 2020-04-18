@@ -25,7 +25,7 @@ const Navbar = ({show} : Props) => {
 
   const handleClick = (e) => {
     // @ts-ignore
-    if (confirmationWindow.current.contains(e.target)) {
+    if (confirmationWindow && confirmationWindow.current && confirmationWindow.current.contains(e.target)) {
       return;
     }
     setShowLogoutConfirmation(false)
