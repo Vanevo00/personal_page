@@ -72,11 +72,43 @@ export const ConfirmationContainer = styled.div<NavbarProps>`
   right: ${props => props.show ? '50px' : '-200px'};
   transition: .4s;
   position: absolute;
-  
   background-color: ${props => props.theme.colors.darkGrey};
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   color: ${props => props.theme.colors.mainColor};
   overflow: hidden;
+  font-size: ${props => props.theme.fontSizes.l};
+  padding-top: 1rem;
+`
+
+export const LogoutText = styled.div`
+  width: 90%;
+`
+
+export const LogoutButtons = styled.div`
+  display: flex;
+  align-self: flex-end;
+  width: 100%;
+`
+
+export const LogoutButtonRed = styled.button`
+  width: 50%;
+  border: none;
+  background-color: ${props => props.theme.colors.warning};
+  height: 2rem;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: ${props => props.theme.colors.warningLighten};
+  }
+`
+
+export const LogoutButtonGreen = styled(LogoutButtonRed)`
+  background-color: ${props => props.theme.colors.success};
+  
+  &:hover {
+    background-color: ${props => props.theme.colors.successLighten};
+  }
 `

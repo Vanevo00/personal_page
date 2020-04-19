@@ -1,7 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { LogoLeft, LogoRight, SmallColorfulV, SmallDarkV, SmallLogo } from './StyledLogo'
-import { ConfirmationContainer, MenuButton, MenuLink, MiddleMenu, NavbarContainer, UserInfo } from './StyledNavbar'
+import {
+  ConfirmationContainer, LogoutButtonGreen, LogoutButtonRed,
+  LogoutButtons, LogoutText,
+  MenuButton,
+  MenuLink,
+  MiddleMenu,
+  NavbarContainer,
+  UserInfo
+} from './StyledNavbar'
 import AuthContext from '../context/auth/authContext'
 
 interface Props {
@@ -77,9 +85,11 @@ const Navbar = ({show} : Props) => {
               </Link>
               <MenuButton last={true} onClick={handleLogoutClick}>LOGOUT</MenuButton>
               <ConfirmationContainer show={showLogoutConfirmation} ref={confirmationWindow}>
-                Are you sure you want to logout?
-                <button onClick={handleConfirmClick}>Logout</button>
-                <button onClick={handleCancelClick}>Close</button>
+                <LogoutText>Are you sure you want to logout?</LogoutText>
+                <LogoutButtons>
+                  <LogoutButtonRed onClick={handleConfirmClick}>Logout</LogoutButtonRed>
+                  <LogoutButtonGreen onClick={handleCancelClick}>Close</LogoutButtonGreen>
+                </LogoutButtons>
               </ConfirmationContainer>
             </>
           :
