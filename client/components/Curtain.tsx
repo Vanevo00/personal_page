@@ -6,6 +6,7 @@ import {
   CurtainParagraph, NameInput, CurtainButton, UserSpecificParagraph, CurtainError
 } from './StyledCurtain'
 import MainContext from '../context/main/mainContext'
+import saveTomorrowToLocalStorage from '../utils/saveTomorrowToLocalStorage'
 
 const Curtain = () => {
   const [showCurtain, setShowCurtain] = useState(false)
@@ -57,6 +58,7 @@ const Curtain = () => {
     setTimeout(() => {
       setHideWholeCurtain(true)
       mainContext.showMainContentText()
+      saveTomorrowToLocalStorage()
     }, 5500)
   }
 

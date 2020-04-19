@@ -3,24 +3,31 @@ import { MainContentText } from './StyledMainContent'
 import MainContext from '../context/main/mainContext'
 import Navbar from './Navbar'
 import { GeneralContainer } from './StyledContainers'
+import saveTomorrowToLocalStorage from '../utils/saveTomorrowToLocalStorage'
+import timeToRepeatAnimation from '../utils/timeToRepeatAnimation'
 
 const MainContent = () => {
   const mainContext = useContext(MainContext)
 
   useEffect(() => {
-    if (localStorage.visitorName && !mainContext.wasMainPageVisited) {
-      mainContext.showMainContent()
-      mainContext.rotateLogo()
-      setTimeout(() => {
-        mainContext.showLogo()
-      }, 1000)
-      setTimeout(() => {
-        mainContext.hideLogo()
-      }, 2000)
-      setTimeout(() => {
+    if (localStorage.visitorName) {
+      if (!localStorage.mainPageVisited && timeToRepeatAnimation()) {
+        mainContext.showMainContent()
+        mainContext.rotateLogo()
+        setTimeout(() => {
+          mainContext.showLogo()
+        }, 1000)
+        setTimeout(() => {
+          mainContext.hideLogo()
+        }, 2000)
+        setTimeout(() => {
+          mainContext.showMainContentText()
+          saveTomorrowToLocalStorage()
+        },3500)
+      } else {
+        mainContext.showMainContent()
         mainContext.showMainContentText()
-        mainContext.mainPageVisited()
-      },3500)
+      }
     }
   },[])
 
