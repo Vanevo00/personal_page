@@ -6,8 +6,6 @@ services:
     build: .
     ports:
       - '5050:5050'
-    volumes:
-      - .:/usr/src/app
     links:
       - mongo
   node-client:
@@ -17,8 +15,6 @@ services:
       context: ./client
     ports:
       - '5051:5051'
-    volumes:
-      - ./client:/usr/src/app
     links:
       - node-api
   mongo:
